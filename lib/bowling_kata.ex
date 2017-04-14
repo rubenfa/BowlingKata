@@ -3,20 +3,23 @@ defmodule BowlingKata do
   Documentation for BowlingKata.
   """
 
- 
   def calc_score(frame) do
     frame
     |> String.codepoints
     |> get_score
   end
 
-  defp get_score([head | [next = "/" | tail]]) do
-    get_score(tail) + get_score_of(next) 
+  defp get_score([ _ | [ try_2 = "/" | [next_1 | tail]]]) do
+    10 + get_score_of(next_1) + get_score([next_1] ++ tail)
   end
 
-  defp get_score([head | [next | tail]]) do
-    get_score(tail) + get_score_of(head) + get_score_of(next)
+  defp get_score(last_try) when length(last_try) == 1 do
+    0
   end
+
+  defp get_score([try_1 | [try_2 | tail]]) do
+    get_score_of(try_1) + get_score_of(try_2) + get_score(tail)
+  end  
 
   defp get_score([]) do
      0
