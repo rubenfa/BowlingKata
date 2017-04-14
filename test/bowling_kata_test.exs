@@ -10,8 +10,9 @@ defmodule BowlingKataTest do
     testing("9-9-9-9-9-9-9-9-9-9-", 90)
   end
 
-  test "If in two tries the player knock down all pins this is a spare and his score is 10" do
+  test "If in two tries the player knocks down all pins this is a spare and his score is 10" do
     testing("1/000000000000000000", 10)
+    testing("1/100000000000000000", 12)
   end
 
   test "Incremental frames with one more spare each time" do
@@ -28,6 +29,11 @@ defmodule BowlingKataTest do
     testing("1/1/1/1/1/1/1/1/1/1/1", 110)
   end
 
+  test "If the player knocks down all pins in one try, it is a strike and puntuation is 10 plus pins in next two tries" do
+    testing("#00000000000000000000", 10)
+    testing("#10000000000000000000", 12)
+    testing("#11000000000000000000", 14)
+  end
 
   defp testing(test_value, expected_result) do
     assert BowlingKata.calc_score(test_value) == expected_result
