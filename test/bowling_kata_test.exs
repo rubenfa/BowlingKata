@@ -12,7 +12,10 @@ defmodule BowlingKataTest do
 
   test "If in two tries the player knock down all pins this is a spare and his score is ten" do
     testing("1/000000000000000000", 10)
-  end
+    testing("2/000000000000000000", 10)
+    testing("2/100000000000000000", 11)
+
+   end
 
 
   defp testing(test_value, expected_result) do
