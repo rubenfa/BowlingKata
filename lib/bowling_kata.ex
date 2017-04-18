@@ -13,14 +13,18 @@ defmodule BowlingKata do
     10 + get_score_of(next_1) + get_score([next_1] ++ tail)
   end
 
+  # defp get_score([ try_1 = "#" | [ next_1 | [next_2 | []]]]) do
+  #   10 + get_score_of(next_1) + get_score_of(next_2)
+  # end
+
   defp get_score([ try_1 = "#" | [ next_1 | [next_2 | tail]]]) do
     10 + get_score_of(next_1) + get_score_of(next_2) + get_score([next_1, next_2] ++ tail)
   end
 
   defp get_score(last_try) when length(last_try) == 1 do
-    0
+      0
   end
-
+  
   defp get_score([try_1 | [try_2 | tail]]) do
     get_score_of(try_1) + get_score_of(try_2) + get_score(tail)
   end  

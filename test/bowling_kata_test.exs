@@ -35,6 +35,19 @@ defmodule BowlingKataTest do
     testing("#11000000000000000000", 14)
   end
 
+  test "Incremental frame with one more strike each time" do
+    testing("#110000000000000000", 14)
+    testing("##1100000000000000", 35)
+    testing("###11000000000000", 65)
+    testing("####110000000000", 95)
+    testing("#####1100000000", 125)
+    testing("######11000000", 155)
+    testing("#######110000", 185)
+    testing("########1100", 215)
+    testing("#########11", 245)
+    testing("##########11", 273)
+  end
+
   defp testing(test_value, expected_result) do
     assert BowlingKata.calc_score(test_value) == expected_result
   end
